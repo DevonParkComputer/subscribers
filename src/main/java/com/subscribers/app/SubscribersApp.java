@@ -17,7 +17,7 @@ public class SubscribersApp {
 			System.out.println("#sz00: " + new SubscriberDao().getSize());
 
 			try {
-				phoneNumber = new PhoneNumber("0123456789");
+				phoneNumber = new PhoneNumber("A123456789");
 				subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
 				System.out.println("#pn01: " + new SubscriberDao().find(phoneNumber).getPhoneNumber().getDigits());
 				System.out.println("#sz01: " + new SubscriberDao().getSize());
