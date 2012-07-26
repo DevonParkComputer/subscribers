@@ -26,17 +26,23 @@ public class Db {
 	static Subscriber get(PhoneNumber phoneNumber)
 	throws SubscriberNotFoundException {
 
-		if(subscribers.containsKey(phoneNumber)) return subscribers.get(phoneNumber);
-
-		throw new SubscriberNotFoundException();
+		if(subscribers.containsKey(phoneNumber)) {
+			return subscribers.get(phoneNumber);
+		}
+		else {
+			throw new SubscriberNotFoundException();
+		}
 	}
 
-	static Subscriber remove(PhoneNumber phoneNumber)
+	static void remove(PhoneNumber phoneNumber)
 	throws SubscriberNotFoundException {
 
-		if(subscribers.containsKey(phoneNumber)) subscribers.remove(phoneNumber);
-
-		throw new SubscriberNotFoundException();
+		if(subscribers.containsKey(phoneNumber)) {
+			subscribers.remove(phoneNumber);
+		}
+		else {
+			throw new SubscriberNotFoundException();
+		}
 	}
 
 	static void clear() {
