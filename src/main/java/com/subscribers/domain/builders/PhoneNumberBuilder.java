@@ -1,6 +1,7 @@
 package com.subscribers.domain.builders;
 
 import com.subscribers.domain.PhoneNumber;
+import com.subscribers.domain.validation.exceptions.PhoneNumberValidationException;
 
 public class PhoneNumberBuilder {
 
@@ -11,7 +12,9 @@ public class PhoneNumberBuilder {
 		return this;
 	}
 
-	public PhoneNumber build() {
+	public PhoneNumber build()
+	throws PhoneNumberValidationException {
+
 		return new PhoneNumber(digits);
 	}
 }

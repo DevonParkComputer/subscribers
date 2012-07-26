@@ -45,6 +45,10 @@ public class Db {
 		}
 	}
 
+	static int size() {
+		return subscribers.size();
+	}
+
 	static void clear() {
 		subscribers.clear();
 	}

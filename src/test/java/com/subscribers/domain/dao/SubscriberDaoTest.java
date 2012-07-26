@@ -2,6 +2,7 @@ package com.subscribers.domain.dao;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -9,12 +10,17 @@ import org.mockito.runners.MockitoJUnitRunner;
 public class SubscriberDaoTest {
 
 	@Before
-	private void setUp() {
+	public void setUp() {
 		Db.clear();
 	}
 
+	@Test
+	public void shouldExist() {
+		new SubscriberDao();
+	}
+
 	@After
-	private void tearDown() {
+	public void tearDown() {
 		Db.clear();
 	}
 }

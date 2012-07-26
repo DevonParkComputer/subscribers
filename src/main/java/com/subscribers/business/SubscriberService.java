@@ -16,7 +16,7 @@ public class SubscriberService {
 		subscriberDao = new SubscriberDao();
 	}
 
-	public void addSubsriber(PhoneNumber phoneNumber, String name, int balance, float decrementRate)
+	public void addSubscriber(PhoneNumber phoneNumber, String name, int balance, double decrementRate)
 	throws SubscriberAlreadyExistsException {
 
 		SubscriberBuilder subscriberBuilder = new SubscriberBuilder();

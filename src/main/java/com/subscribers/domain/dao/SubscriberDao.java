@@ -31,7 +31,13 @@ public class SubscriberDao {
 		Db.remove(phoneNumber);
 	}
 
+	public int getSize() {
+
+		return Db.size();
+	}
+
 	public void clear() {
+
 		Db.clear();
 	}
 }

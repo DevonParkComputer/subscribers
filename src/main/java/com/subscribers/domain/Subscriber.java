@@ -11,13 +11,14 @@ public class Subscriber {
 	@Range(min=0,max=1000)
 	private final int balance;
 
-	private final float decrementRate;
+	private final double decrementRate;
 
 	public Subscriber(
 			PhoneNumber phoneNumber,
 			String name,
 			int balance,
-			float decrementRate) {
+			double decrementRate) {
+
 		this.phoneNumber = phoneNumber;
 		this.name = name;
 		this.balance = balance;
@@ -36,7 +37,7 @@ public class Subscriber {
 		return balance;
 	}
 
-	public float getDecrementRate() {
+	public double getDecrementRate() {
 		return decrementRate;
 	}
 }

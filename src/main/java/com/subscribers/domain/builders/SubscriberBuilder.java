@@ -8,7 +8,7 @@ public class SubscriberBuilder {
 	private PhoneNumber phoneNumber;
 	private String name;
 	private int balance;
-	private float decrementRate;
+	private double decrementRate;
 
 	public SubscriberBuilder phoneNumber(PhoneNumber phoneNumber) {
 		this.phoneNumber = phoneNumber;
@@ -25,7 +25,7 @@ public class SubscriberBuilder {
 		return this;
 	}
 
-	public SubscriberBuilder decrementRate(float decrementRate) {
+	public SubscriberBuilder decrementRate(double decrementRate) {
 		this.decrementRate = decrementRate;
 		return this;
 	}
