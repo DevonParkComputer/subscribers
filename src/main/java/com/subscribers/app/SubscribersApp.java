@@ -15,8 +15,6 @@ public class SubscribersApp {
 			SubscriberService subscriberService = new SubscriberService();
 			PhoneNumber phoneNumber = null;
 
-			System.out.println("#sz00: " + new SubscriberDao().getSize());
-
 			try {
 				phoneNumber = new PhoneNumber("A123456789");
 				subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
