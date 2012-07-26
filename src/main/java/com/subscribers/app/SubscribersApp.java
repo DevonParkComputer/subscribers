@@ -19,43 +19,41 @@ public class SubscribersApp {
 			try {
 				phoneNumber = new PhoneNumber("0123456789");
 				subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
-
-				System.out.println("#sz01: " + new SubscriberDao().getSize() + " " + new SubscriberDao().find(phoneNumber).getPhoneNumber().getDigits());
-			}
-			catch(SubscriberAlreadyExistsException saee) {}
-			catch(SubscriberNotFoundException snfe) {}
-			catch(PhoneNumberValidationException pnve) {
-				System.out.println(pnve.getMessage());
-				System.out.println("#szX0: " + new SubscriberDao().getSize());
-				System.out.println("#valid: " + phoneNumber.getDigits());
-			}
-
-			try {
-				phoneNumber = new PhoneNumber("123456789");
-				subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
-
-				System.out.println("#sz02: " + new SubscriberDao().getSize() + " " + new SubscriberDao().find(phoneNumber).getPhoneNumber().getDigits());
+				System.out.println("#pn01: " + new SubscriberDao().find(phoneNumber).getPhoneNumber().getDigits());
+				System.out.println("#sz01: " + new SubscriberDao().getSize());
 			}
 			catch(SubscriberAlreadyExistsException saee) {}
 			catch(SubscriberNotFoundException snfe) {}
 			catch(PhoneNumberValidationException pnve) {
 				System.out.println(pnve.getMessage());
 				System.out.println("#szX1: " + new SubscriberDao().getSize());
-				System.out.println("#valid: " + phoneNumber.getDigits());
 			}
 
 			try {
-				phoneNumber = new PhoneNumber("2345678901");
+				phoneNumber = new PhoneNumber("123456789");
 				subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
 
-				System.out.println("#sz03: " + new SubscriberDao().getSize() + " " + new SubscriberDao().find(phoneNumber).getPhoneNumber().getDigits());
+				System.out.println("#pn02: " + new SubscriberDao().find(phoneNumber).getPhoneNumber().getDigits());
+				System.out.println("#sz02: " + new SubscriberDao().getSize());
 			}
 			catch(SubscriberAlreadyExistsException saee) {}
 			catch(SubscriberNotFoundException snfe) {}
 			catch(PhoneNumberValidationException pnve) {
 				System.out.println(pnve.getMessage());
 				System.out.println("#szX2: " + new SubscriberDao().getSize());
-				System.out.println("#valid: " + phoneNumber.getDigits());
+			}
+
+			try {
+				phoneNumber = new PhoneNumber("2345678901");
+				subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
+				System.out.println("#pn03: " + new SubscriberDao().find(phoneNumber).getPhoneNumber().getDigits());
+				System.out.println("#sz03: " + new SubscriberDao().getSize());
+			}
+			catch(SubscriberAlreadyExistsException saee) {}
+			catch(SubscriberNotFoundException snfe) {}
+			catch(PhoneNumberValidationException pnve) {
+				System.out.println(pnve.getMessage());
+				System.out.println("#szX3: " + new SubscriberDao().getSize());
 			}
 	}
 }
