@@ -1,6 +1,6 @@
 package com.subscribers.domain;
 
-import com.subscribers.domain.validation.exceptions.PhoneNumberValidationException;
+import com.subscribers.domain.exceptions.PhoneNumberValidationException;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.ConstraintViolation;
