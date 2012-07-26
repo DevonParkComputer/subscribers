@@ -9,6 +9,7 @@ import com.subscribers.domain.exceptions.PhoneNumberValidationException;
 
 public class SubscribersApp {
 
+		//todo: add logging
 		public static void main(String[] args) {
 
 			SubscriberService subscriberService = new SubscriberService();
