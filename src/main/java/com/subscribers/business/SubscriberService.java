@@ -6,6 +6,7 @@ import com.subscribers.domain.builders.SubscriberBuilder;
 import com.subscribers.domain.dao.SubscriberDao;
 import com.subscribers.domain.dao.exceptions.SubscriberAlreadyExistsException;
 import com.subscribers.domain.dao.exceptions.SubscriberNotFoundException;
+import com.subscribers.domain.exceptions.BalanceOutOfRangeException;
 
 public class SubscriberService {
 
@@ -17,7 +18,7 @@ public class SubscriberService {
 	}
 
 	public void addSubscriber(PhoneNumber phoneNumber, String name, int balance, double decrementRate)
-	throws SubscriberAlreadyExistsException {
+	throws SubscriberAlreadyExistsException, BalanceOutOfRangeException {
 
 		SubscriberBuilder subscriberBuilder = new SubscriberBuilder();
 		subscriberBuilder.phoneNumber(phoneNumber);
@@ -36,7 +37,9 @@ public class SubscriberService {
 	}
 
 	public void updateBalance(PhoneNumber phoneNumber, int balance)
-	throws SubscriberNotFoundException, SubscriberAlreadyExistsException {
+	throws SubscriberNotFoundException,
+		   BalanceOutOfRangeException,
+		   SubscriberAlreadyExistsException {
 
 		Subscriber subscriber = subscriberDao.find(phoneNumber);
 

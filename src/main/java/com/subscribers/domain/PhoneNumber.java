@@ -1,6 +1,6 @@
 package com.subscribers.domain;
 
-import com.subscribers.domain.exceptions.PhoneNumberValidationException;
+import com.subscribers.domain.exceptions.PhoneNumberException;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.ConstraintViolation;
@@ -17,7 +17,7 @@ public class PhoneNumber {
 	private final String digits;
 
 	public PhoneNumber(String digits)
-	throws PhoneNumberValidationException {
+	throws PhoneNumberException {
 
 		this.digits = digits;
 
@@ -26,7 +26,7 @@ public class PhoneNumber {
 		Set<ConstraintViolation<PhoneNumber>> constraintViolations = validator.validate(this);
 
 		if(constraintViolations.size() > 0) {
-			throw new PhoneNumberValidationException();
+			throw new PhoneNumberException();
 		}
 	}
 

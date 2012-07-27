@@ -2,6 +2,7 @@ package com.subscribers.domain.builders;
 
 import com.subscribers.domain.PhoneNumber;
 import com.subscribers.domain.Subscriber;
+import com.subscribers.domain.exceptions.BalanceOutOfRangeException;
 
 public class SubscriberBuilder {
 
@@ -30,7 +31,8 @@ public class SubscriberBuilder {
 		return this;
 	}
 
-	public Subscriber build() {
+	public Subscriber build()
+	throws BalanceOutOfRangeException {
 		return new Subscriber(phoneNumber, name, balance, decrementRate);
 	}
 }
