@@ -2,6 +2,7 @@ package com.subscribers.app;
 
 import com.subscribers.business.SubscriberService;
 import com.subscribers.domain.PhoneNumber;
+import com.subscribers.domain.Subscriber;
 import com.subscribers.domain.dao.exceptions.SubscriberAlreadyExistsException;
 import com.subscribers.domain.dao.exceptions.SubscriberNotFoundException;
 import com.subscribers.domain.exceptions.BalanceOutOfRangeException;
@@ -65,7 +66,7 @@ public class SubscribersApp {
 		//Valid entry
 		try {
 			phoneNumber = new PhoneNumber("0123456789");
-			subscriberService.addSubscriber(phoneNumber,"amcii",900,100);
+			subscriberService.addSubscriber(phoneNumber,"amcii",992,100);
 			System.out.println("Subscriber added: " + phoneNumber.getDigits());
 		}
 		catch(SubscriberAlreadyExistsException saee) {
@@ -221,9 +222,32 @@ public class SubscribersApp {
 
 		//Valid balance retrieval
 		try {
+			phoneNumber = new PhoneNumber("0123456789");
+			Subscriber subscriber = subscriberService.retrieveSubscriber(phoneNumber);
+			System.out.println("Subscriber balance: " + phoneNumber.getDigits()
+					+ " ("
+					+ subscriber.getBalance()
+					+ "¢, "
+					+ subscriber.getBalance() / subscriber.getDecrementRate()
+					+ " minutes remaining)");
+		}
+		catch(PhoneNumberException pnve) {
+			System.out.println(pnve.getMessage());
+		}
+		catch(SubscriberNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+
+		//SubscriberNotFoundException during balance retrieval
+		try {
 			phoneNumber = new PhoneNumber("1234567890");
-			int balance = subscriberService.retrieveBalance(phoneNumber);
-			System.out.println("Subscriber updated: " + phoneNumber.getDigits() + " (¢" + balance + ")");
+			Subscriber subscriber = subscriberService.retrieveSubscriber(phoneNumber);
+			System.out.println("Subscriber balance: " + phoneNumber.getDigits()
+													  + " ("
+													  + subscriber.getBalance()
+													  + "¢, "
+													  + subscriber.getBalance() / subscriber.getDecrementRate()
+													  + " minutes remaining)");
 		}
 		catch(PhoneNumberException pnve) {
 			System.out.println(pnve.getMessage());
