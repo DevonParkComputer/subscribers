@@ -5,6 +5,8 @@ import com.subscribers.domain.Subscriber;
 import com.subscribers.domain.dao.exceptions.SubscriberAlreadyExistsException;
 import com.subscribers.domain.dao.exceptions.SubscriberNotFoundException;
 
+import java.util.Collection;
+
 public class SubscriberDao {
 
 	public void create(Subscriber subscriber)
@@ -18,6 +20,11 @@ public class SubscriberDao {
 		catch(SubscriberNotFoundException e) {
 			Db.put(subscriber);
 		}
+	}
+
+	public Collection<Subscriber> findAll() {
+
+		return Db.getSubscribers();
 	}
 
 	public Subscriber find(PhoneNumber phoneNumber)

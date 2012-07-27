@@ -8,12 +8,14 @@ import com.subscribers.domain.dao.exceptions.SubscriberNotFoundException;
 import com.subscribers.domain.exceptions.BalanceOutOfRangeException;
 import com.subscribers.domain.exceptions.PhoneNumberException;
 
+import java.util.Collection;
+
 public class SubscribersApp {
 
 	//todo: add logging
 	public static void main(String[] args) {
 
-		SubscriberService subscriberService = new SubscriberService();
+		final SubscriberService subscriberService = new SubscriberService();
 		PhoneNumber phoneNumber = null;
 
 		//PhoneNumberException due to alpha character
@@ -223,14 +225,7 @@ public class SubscribersApp {
 		//Valid balance retrieval
 		try {
 			phoneNumber = new PhoneNumber("0123456789");
-			Subscriber subscriber = subscriberService.retrieveSubscriber(phoneNumber);
-			//todo: add getMinutesRemaining to business
-			System.out.println("Subscriber balance: " + phoneNumber.getDigits()
-					+ " ("
-					+ subscriber.getBalance()
-					+ "¢, "
-					+ subscriber.getBalance() / subscriber.getDecrementRate()
-					+ " minutes remaining)");
+			System.out.println(subscriberService.retrieveBalance(phoneNumber));
 		}
 		catch(PhoneNumberException pnve) {
 			System.out.println(pnve.getMessage());
@@ -242,14 +237,7 @@ public class SubscribersApp {
 		//SubscriberNotFoundException during balance retrieval
 		try {
 			phoneNumber = new PhoneNumber("1234567890");
-			//todo: add getMinutesRemaining to business
-			Subscriber subscriber = subscriberService.retrieveSubscriber(phoneNumber);
-			System.out.println("Subscriber balance: " + phoneNumber.getDigits()
-													  + " ("
-													  + subscriber.getBalance()
-													  + "¢, "
-													  + subscriber.getBalance() / subscriber.getDecrementRate()
-													  + " minutes remaining)");
+			System.out.println(subscriberService.retrieveBalance(phoneNumber));
 		}
 		catch(PhoneNumberException pnve) {
 			System.out.println(pnve.getMessage());
@@ -259,8 +247,23 @@ public class SubscribersApp {
 		}
 
 		new Thread() {
-			//todo: add getCurrent accounts to business
-		}.run();
+			Collection<Subscriber> subscribers = subscriberService.getCurrentAccounts();
+
+			@Override
+			public void start() {
+				while(true) {
+					for(Subscriber subscriber : subscribers) {
+						System.out.println(subscriber.getPhoneNumber().getDigits() + " " + subscriber.getName());
+					}
+					try {
+						sleep(60000L);
+					}
+					catch(InterruptedException e) {
+						//todo: recover. Maybe restart the thread?
+					}
+				}
+			}
+		}.start();
 
 	}
 }

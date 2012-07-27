@@ -4,6 +4,7 @@ import com.subscribers.domain.PhoneNumber;
 import com.subscribers.domain.Subscriber;
 import com.subscribers.domain.dao.exceptions.SubscriberNotFoundException;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,6 +26,10 @@ public class Db {
 		else {
 			throw new SubscriberNotFoundException();
 		}
+	}
+
+	static Collection<Subscriber> getSubscribers() {
+		return subscribers.values();
 	}
 
 	static void remove(PhoneNumber phoneNumber)

@@ -8,6 +8,8 @@ import com.subscribers.domain.dao.exceptions.SubscriberAlreadyExistsException;
 import com.subscribers.domain.dao.exceptions.SubscriberNotFoundException;
 import com.subscribers.domain.exceptions.BalanceOutOfRangeException;
 
+import java.util.Collection;
+
 public class SubscriberService {
 
 	private SubscriberDao subscriberDao;
@@ -58,10 +60,20 @@ public class SubscriberService {
 		subscriberDao.update(phoneNumber, subscriberBuilder.build());
 	}
 
-	public int retrieveBalance(PhoneNumber phoneNumber)
+	public String retrieveBalance(PhoneNumber phoneNumber)
 	throws SubscriberNotFoundException {
 
 		Subscriber subscriber = subscriberDao.find(phoneNumber);
-		return subscriber.getBalance();
+		return "Subscriber balance: "
+				+ phoneNumber.getDigits()
+				+ " ("
+				+ subscriber.getBalance()
+				+ "¢, "
+				+ (subscriber.getBalance() / subscriber.getDecrementRate())
+				+ " minutes remaining)";
+	}
+
+	public Collection<Subscriber> getCurrentAccounts() {
+		return subscriberDao.findAll();
 	}
 }
