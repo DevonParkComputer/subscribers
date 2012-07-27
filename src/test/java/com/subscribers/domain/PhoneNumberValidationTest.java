@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class PhoneNumberValidationTest {
 	
 	@Test
-	public void shouldNotAcceptStringsWithLessThanTenCharacters() {
+	public void shouldNotHaveLessThanTenCharacters() {
 		try {
 			new PhoneNumber("123456789");
 			assertTrue(false);
@@ -19,7 +19,7 @@ public class PhoneNumberValidationTest {
 	}
 
 	@Test
-	public void shouldNotAcceptStringsWithMoreThanTenCharacters() {
+	public void shouldNotHaveMoreThanTenCharacters() {
 		try {
 			new PhoneNumber("01234567890");
 			assertTrue(false);
