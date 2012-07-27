@@ -42,17 +42,18 @@ public class SubscriberService {
 		subscriberDao.delete(phoneNumber);
 	}
 
-	public void updateBalance(PhoneNumber phoneNumber, int balance)
+	public void updateBalance(PhoneNumber phoneNumber, int balanceChange)
 	throws SubscriberNotFoundException,
-		   BalanceOutOfRangeException,
-		   SubscriberAlreadyExistsException {
+		   BalanceOutOfRangeException
+	{
 
 		Subscriber subscriber = subscriberDao.find(phoneNumber);
 
 		SubscriberBuilder subscriberBuilder = new SubscriberBuilder();
 		subscriberBuilder.phoneNumber(phoneNumber);
 		subscriberBuilder.name(subscriber.getName());
-		subscriberBuilder.balance(balance);
+		int balance = subscriber.getBalance();
+		subscriberBuilder.balance(balance + balanceChange);
 		subscriberBuilder.decrementRate(subscriber.getDecrementRate());
 		subscriberDao.update(phoneNumber, subscriberBuilder.build());
 	}

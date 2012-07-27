@@ -2,7 +2,6 @@ package com.subscribers.domain.dao;
 
 import com.subscribers.domain.PhoneNumber;
 import com.subscribers.domain.Subscriber;
-import com.subscribers.domain.dao.exceptions.SubscriberAlreadyExistsException;
 import com.subscribers.domain.dao.exceptions.SubscriberNotFoundException;
 
 import java.util.HashMap;
@@ -12,15 +11,9 @@ public class Db {
 
 	private static Map<PhoneNumber,Subscriber> subscribers = new HashMap<PhoneNumber,Subscriber>();
 
-	static void put(Subscriber subscriber)
-	throws SubscriberAlreadyExistsException {
+	static void put(Subscriber subscriber) {
 
-		if(subscribers.containsKey(subscriber.getPhoneNumber())) {
-			throw new SubscriberAlreadyExistsException();
-		}
-		else {
-			subscribers.put(subscriber.getPhoneNumber(), subscriber);
-		}
+		subscribers.put(subscriber.getPhoneNumber(), subscriber);
 	}
 
 	static Subscriber get(PhoneNumber phoneNumber)

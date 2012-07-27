@@ -10,7 +10,14 @@ public class SubscriberDao {
 	public void create(Subscriber subscriber)
 	throws SubscriberAlreadyExistsException {
 
-		Db.put(subscriber);
+		try {
+			if(Db.get(subscriber.getPhoneNumber()) != null) {
+				throw new SubscriberAlreadyExistsException();
+			}
+		}
+		catch(SubscriberNotFoundException e) {
+			Db.put(subscriber);
+		}
 	}
 
 	public Subscriber find(PhoneNumber phoneNumber)
@@ -20,7 +27,7 @@ public class SubscriberDao {
 	}
 
 	public void update(PhoneNumber phoneNumber, Subscriber subscriber)
-	throws SubscriberNotFoundException, SubscriberAlreadyExistsException {
+	throws SubscriberNotFoundException {
 
 		if(Db.get(phoneNumber) != null) Db.put(subscriber);
 	}
