@@ -203,7 +203,6 @@ public class SubscribersApp {
 			System.out.println(boore.getMessage());
 		}
 
-
 		//Oversized decrease to Subscriber balance
 		try {
 			phoneNumber = new PhoneNumber("0123456789");
@@ -218,6 +217,19 @@ public class SubscribersApp {
 		}
 		catch(BalanceOutOfRangeException boore) {
 			System.out.println(boore.getMessage());
+		}
+
+		//Valid balance retrieval
+		try {
+			phoneNumber = new PhoneNumber("1234567890");
+			int balance = subscriberService.retrieveBalance(phoneNumber);
+			System.out.println("Subscriber updated: " + phoneNumber.getDigits() + " (¢" + balance + ")");
+		}
+		catch(PhoneNumberException pnve) {
+			System.out.println(pnve.getMessage());
+		}
+		catch(SubscriberNotFoundException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 }
