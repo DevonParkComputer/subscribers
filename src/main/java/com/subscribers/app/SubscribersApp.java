@@ -224,6 +224,7 @@ public class SubscribersApp {
 		try {
 			phoneNumber = new PhoneNumber("0123456789");
 			Subscriber subscriber = subscriberService.retrieveSubscriber(phoneNumber);
+			//todo: add getMinutesRemaining to business
 			System.out.println("Subscriber balance: " + phoneNumber.getDigits()
 					+ " ("
 					+ subscriber.getBalance()
@@ -241,6 +242,7 @@ public class SubscribersApp {
 		//SubscriberNotFoundException during balance retrieval
 		try {
 			phoneNumber = new PhoneNumber("1234567890");
+			//todo: add getMinutesRemaining to business
 			Subscriber subscriber = subscriberService.retrieveSubscriber(phoneNumber);
 			System.out.println("Subscriber balance: " + phoneNumber.getDigits()
 													  + " ("
@@ -255,5 +257,10 @@ public class SubscribersApp {
 		catch(SubscriberNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
+
+		new Thread() {
+			//todo: add getCurrent accounts to business
+		}.run();
+
 	}
 }
