@@ -11,6 +11,7 @@ public class SubscriberDao {
 	throws SubscriberAlreadyExistsException {
 
 		Db.put(subscriber);
+
 	}
 
 	public Subscriber find(PhoneNumber phoneNumber)

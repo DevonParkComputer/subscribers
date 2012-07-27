@@ -33,4 +33,21 @@ public class PhoneNumber {
 	public String getDigits() {
 		return digits;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		PhoneNumber that = (PhoneNumber) o;
+
+		if (digits != null ? !digits.equals(that.digits) : that.digits != null) return false;
+
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		return digits != null ? digits.hashCode() : 0;
+	}
 }

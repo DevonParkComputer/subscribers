@@ -33,7 +33,6 @@ public class SubscribersApp {
 		try {
 			phoneNumber = new PhoneNumber("123456789");
 			subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
-
 		}
 		catch(SubscriberAlreadyExistsException saee) {
 			System.out.println(saee.getMessage());
@@ -49,7 +48,38 @@ public class SubscribersApp {
 		try {
 			phoneNumber = new PhoneNumber("01234567890");
 			subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
+		}
+		catch(SubscriberAlreadyExistsException saee) {
+			System.out.println(saee.getMessage());
+		}
+		catch(BalanceOutOfRangeException boore) {
+			System.out.println(boore.getMessage());
+		}
+		catch(PhoneNumberException pnve) {
+			System.out.println(pnve.getMessage());
+		}
 
+		//Valid entry
+		try {
+			phoneNumber = new PhoneNumber("0123456789");
+			subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
+			System.out.println("Subscriber: " + phoneNumber);
+		}
+		catch(SubscriberAlreadyExistsException saee) {
+			System.out.println(saee.getMessage());
+		}
+		catch(BalanceOutOfRangeException boore) {
+			System.out.println(boore.getMessage());
+		}
+		catch(PhoneNumberException pnve) {
+			System.out.println(pnve.getMessage());
+		}
+
+		//SubscriberAlreadyExists exception
+		try {
+			phoneNumber = new PhoneNumber("0123456789");
+			subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
+			System.out.println("Subscriber: " + phoneNumber);
 		}
 		catch(SubscriberAlreadyExistsException saee) {
 			System.out.println(saee.getMessage());
