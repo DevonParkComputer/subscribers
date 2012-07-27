@@ -246,6 +246,23 @@ public class SubscribersApp {
 			System.out.println(e.getMessage());
 		}
 
+		//Another valid entry in order to show more than one subscriber when the thread outputs
+		try {
+			phoneNumber = new PhoneNumber("3456789012");
+			subscriberService.addSubscriber(phoneNumber,"jdb",992,100);
+			System.out.println("Subscriber added: " + phoneNumber.getDigits());
+		}
+		catch(SubscriberAlreadyExistsException saee) {
+			System.out.println(saee.getMessage());
+		}
+		catch(BalanceOutOfRangeException boore) {
+			System.out.println(boore.getMessage());
+		}
+		catch(PhoneNumberException pnve) {
+			System.out.println(pnve.getMessage());
+		}
+
+		//Output the subscriber phone number and name approximately once per minute
 		new Thread() {
 			Collection<Subscriber> subscribers = subscriberService.getCurrentAccounts();
 
