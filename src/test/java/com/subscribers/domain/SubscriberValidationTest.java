@@ -12,7 +12,7 @@ public class SubscriberValidationTest {
 	@Test
 	public void shouldNotHaveBalanceLessThanZeroCents() {
 		try {
-			new Subscriber(new PhoneNumber("0123456789"),"name",-1,0.08);
+			new Subscriber(new PhoneNumber("0123456789"),"name",-1,100);
 
 			assertTrue(false);
 		}
@@ -27,7 +27,7 @@ public class SubscriberValidationTest {
 	@Test
 	public void shouldNotHaveBalanceMoreThanOneHundredThousandCents() {
 		try {
-			new Subscriber(new PhoneNumber("0123456789"),"name",100001,0.08);
+			new Subscriber(new PhoneNumber("0123456789"),"name",100001,100);
 			assertTrue(false);
 		}
 		catch(BalanceOutOfRangeException boore) {

@@ -17,7 +17,7 @@ public class SubscriberService {
 		subscriberDao = new SubscriberDao();
 	}
 
-	public void addSubscriber(PhoneNumber phoneNumber, String name, int balance, double decrementRate)
+	public void addSubscriber(PhoneNumber phoneNumber, String name, int balance, int decrementRate)
 	throws SubscriberAlreadyExistsException, BalanceOutOfRangeException {
 
 		SubscriberBuilder subscriberBuilder = new SubscriberBuilder();

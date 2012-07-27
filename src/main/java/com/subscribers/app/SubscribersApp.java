@@ -18,7 +18,7 @@ public class SubscribersApp {
 		//PhoneNumberException due to alpha character
 		try {
 			phoneNumber = new PhoneNumber("A123456789");
-			subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
+			subscriberService.addSubscriber(phoneNumber,"amcii",900,100);
 			System.out.println("Subscriber added: " + phoneNumber);
 		}
 		catch(SubscriberAlreadyExistsException saee) {
@@ -34,7 +34,7 @@ public class SubscribersApp {
 		//PhoneNumberException due to short length
 		try {
 			phoneNumber = new PhoneNumber("123456789");
-			subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
+			subscriberService.addSubscriber(phoneNumber,"amcii",900,100);
 			System.out.println("Subscriber added: " + phoneNumber);
 		}
 		catch(SubscriberAlreadyExistsException saee) {
@@ -50,7 +50,7 @@ public class SubscribersApp {
 		//PhoneNumberException due to long length
 		try {
 			phoneNumber = new PhoneNumber("01234567890");
-			subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
+			subscriberService.addSubscriber(phoneNumber,"amcii",900,100);
 		}
 		catch(SubscriberAlreadyExistsException saee) {
 			System.out.println(saee.getMessage());
@@ -65,7 +65,7 @@ public class SubscribersApp {
 		//Valid entry
 		try {
 			phoneNumber = new PhoneNumber("0123456789");
-			subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
+			subscriberService.addSubscriber(phoneNumber,"amcii",900,100);
 			System.out.println("Subscriber added: " + phoneNumber);
 		}
 		catch(SubscriberAlreadyExistsException saee) {
@@ -81,7 +81,7 @@ public class SubscribersApp {
 		//SubscriberAlreadyExists exception
 		try {
 			phoneNumber = new PhoneNumber("0123456789");
-			subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
+			subscriberService.addSubscriber(phoneNumber,"amcii",900,100);
 			System.out.println("Subscriber added: " + phoneNumber);
 		}
 		catch(SubscriberAlreadyExistsException saee) {
@@ -98,7 +98,7 @@ public class SubscribersApp {
 		try {
 			phoneNumber = new PhoneNumber("1234567890");
 			int balance = 50000;
-			subscriberService.addSubscriber(phoneNumber,"amcii",balance,0.2);
+			subscriberService.addSubscriber(phoneNumber,"amcii",balance,100);
 			System.out.println("Subscriber added: " + phoneNumber);
 		}
 		catch(SubscriberAlreadyExistsException saee) {
@@ -115,7 +115,7 @@ public class SubscribersApp {
 		try {
 			phoneNumber = new PhoneNumber("2345678901");
 			int balance = 100001;
-			subscriberService.addSubscriber(phoneNumber,"amcii",balance,0.2);
+			subscriberService.addSubscriber(phoneNumber,"amcii",balance,100);
 			System.out.println("Subscriber added: " + phoneNumber);
 		}
 		catch(SubscriberAlreadyExistsException saee) {
@@ -132,7 +132,7 @@ public class SubscribersApp {
 		try {
 			phoneNumber = new PhoneNumber("2345678901");
 			int balance = -1;
-			subscriberService.addSubscriber(phoneNumber,"amcii",balance,0.2);
+			subscriberService.addSubscriber(phoneNumber,"amcii",balance,100);
 			System.out.println("Subscriber added: " + phoneNumber);
 		}
 		catch(SubscriberAlreadyExistsException saee) {

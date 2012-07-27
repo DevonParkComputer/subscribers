@@ -18,13 +18,13 @@ public class Subscriber {
 	@Range(min=0,max=100000)
 	private final int balance;
 
-	private final double decrementRate;
+	private final int decrementRate;
 
 	public Subscriber(
 			PhoneNumber phoneNumber,
 			String name,
 			int balance,
-			double decrementRate)
+			int decrementRate)
 	throws BalanceOutOfRangeException {
 
 		this.phoneNumber = phoneNumber;
@@ -53,7 +53,7 @@ public class Subscriber {
 		return balance;
 	}
 
-	public double getDecrementRate() {
+	public int getDecrementRate() {
 		return decrementRate;
 	}
 }

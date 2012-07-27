@@ -9,7 +9,7 @@ public class SubscriberBuilder {
 	private PhoneNumber phoneNumber;
 	private String name;
 	private int balance;
-	private double decrementRate;
+	private int decrementRate;
 
 	public SubscriberBuilder phoneNumber(PhoneNumber phoneNumber) {
 		this.phoneNumber = phoneNumber;
@@ -26,7 +26,7 @@ public class SubscriberBuilder {
 		return this;
 	}
 
-	public SubscriberBuilder decrementRate(double decrementRate) {
+	public SubscriberBuilder decrementRate(int decrementRate) {
 		this.decrementRate = decrementRate;
 		return this;
 	}
