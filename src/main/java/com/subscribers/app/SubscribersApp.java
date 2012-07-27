@@ -99,7 +99,7 @@ public class SubscribersApp {
 			phoneNumber = new PhoneNumber("1234567890");
 			int balance = 50000;
 			subscriberService.addSubscriber(phoneNumber,"amcii",balance,0.2);
-			System.out.println("Subscriber added : " + phoneNumber);
+			System.out.println("Subscriber added: " + phoneNumber);
 		}
 		catch(SubscriberAlreadyExistsException saee) {
 			System.out.println(saee.getMessage());
