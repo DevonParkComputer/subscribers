@@ -36,6 +36,12 @@ public class SubscriberService {
 		return subscriberDao.find(phoneNumber);
 	}
 
+	public void removeSubscriber(PhoneNumber phoneNumber)
+	throws SubscriberNotFoundException {
+
+		subscriberDao.delete(phoneNumber);
+	}
+
 	public void updateBalance(PhoneNumber phoneNumber, int balance)
 	throws SubscriberNotFoundException,
 		   BalanceOutOfRangeException,

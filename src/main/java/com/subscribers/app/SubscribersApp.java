@@ -3,6 +3,7 @@ package com.subscribers.app;
 import com.subscribers.business.SubscriberService;
 import com.subscribers.domain.PhoneNumber;
 import com.subscribers.domain.dao.exceptions.SubscriberAlreadyExistsException;
+import com.subscribers.domain.dao.exceptions.SubscriberNotFoundException;
 import com.subscribers.domain.exceptions.BalanceOutOfRangeException;
 import com.subscribers.domain.exceptions.PhoneNumberException;
 
@@ -18,6 +19,7 @@ public class SubscribersApp {
 		try {
 			phoneNumber = new PhoneNumber("A123456789");
 			subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
+			System.out.println("Subscriber added: " + phoneNumber);
 		}
 		catch(SubscriberAlreadyExistsException saee) {
 			System.out.println(saee.getMessage());
@@ -33,6 +35,7 @@ public class SubscribersApp {
 		try {
 			phoneNumber = new PhoneNumber("123456789");
 			subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
+			System.out.println("Subscriber added: " + phoneNumber);
 		}
 		catch(SubscriberAlreadyExistsException saee) {
 			System.out.println(saee.getMessage());
@@ -63,7 +66,7 @@ public class SubscribersApp {
 		try {
 			phoneNumber = new PhoneNumber("0123456789");
 			subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
-			System.out.println("Subscriber: " + phoneNumber);
+			System.out.println("Subscriber added: " + phoneNumber);
 		}
 		catch(SubscriberAlreadyExistsException saee) {
 			System.out.println(saee.getMessage());
@@ -79,7 +82,7 @@ public class SubscribersApp {
 		try {
 			phoneNumber = new PhoneNumber("0123456789");
 			subscriberService.addSubscriber(phoneNumber,"amcii",900,0.2);
-			System.out.println("Subscriber: " + phoneNumber);
+			System.out.println("Subscriber added: " + phoneNumber);
 		}
 		catch(SubscriberAlreadyExistsException saee) {
 			System.out.println(saee.getMessage());
@@ -91,6 +94,81 @@ public class SubscribersApp {
 			System.out.println(pnve.getMessage());
 		}
 
+		//Valid balance at construction
+		try {
+			phoneNumber = new PhoneNumber("1234567890");
+			int balance = 50000;
+			subscriberService.addSubscriber(phoneNumber,"amcii",balance,0.2);
+			System.out.println("Subscriber added : " + phoneNumber);
+		}
+		catch(SubscriberAlreadyExistsException saee) {
+			System.out.println(saee.getMessage());
+		}
+		catch(BalanceOutOfRangeException boore) {
+			System.out.println(boore.getMessage());
+		}
+		catch(PhoneNumberException pnve) {
+			System.out.println(pnve.getMessage());
+		}
 
+		//Large balance at construction
+		try {
+			phoneNumber = new PhoneNumber("2345678901");
+			int balance = 100001;
+			subscriberService.addSubscriber(phoneNumber,"amcii",balance,0.2);
+			System.out.println("Subscriber added: " + phoneNumber);
+		}
+		catch(SubscriberAlreadyExistsException saee) {
+			System.out.println(saee.getMessage());
+		}
+		catch(BalanceOutOfRangeException boore) {
+			System.out.println(boore.getMessage());
+		}
+		catch(PhoneNumberException pnve) {
+			System.out.println(pnve.getMessage());
+		}
+
+		//Negative balance at construction
+		try {
+			phoneNumber = new PhoneNumber("2345678901");
+			int balance = -1;
+			subscriberService.addSubscriber(phoneNumber,"amcii",balance,0.2);
+			System.out.println("Subscriber added: " + phoneNumber);
+		}
+		catch(SubscriberAlreadyExistsException saee) {
+			System.out.println(saee.getMessage());
+		}
+		catch(BalanceOutOfRangeException boore) {
+			System.out.println(boore.getMessage());
+		}
+		catch(PhoneNumberException pnve) {
+			System.out.println(pnve.getMessage());
+		}
+
+		//Valid remove
+		try {
+			phoneNumber = new PhoneNumber("1234567890");
+			subscriberService.removeSubscriber(phoneNumber);
+			System.out.println("Subscriber removed: " + phoneNumber);
+		}
+		catch(PhoneNumberException pnve) {
+			System.out.println(pnve.getMessage());
+		}
+		catch(SubscriberNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+
+		//SubscriberNotFound exception when attempting to remove
+		try {
+			phoneNumber = new PhoneNumber("1234567890");
+			subscriberService.removeSubscriber(phoneNumber);
+			System.out.println("Subscriber removed: " + phoneNumber);
+		}
+		catch(PhoneNumberException pnve) {
+			System.out.println(pnve.getMessage());
+		}
+		catch(SubscriberNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }
