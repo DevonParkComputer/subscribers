@@ -2,6 +2,7 @@ package com.subscribers.domain;
 
 import com.subscribers.domain.exceptions.BalanceOutOfRangeException;
 import com.subscribers.domain.exceptions.PhoneNumberException;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
