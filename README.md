@@ -1,5 +1,5 @@
-Mobile Subscriber sample application
-====================================
+Mobile subscriber service example
+---------------------------------
 
 Reference example for the proposed mobile subscriber model.
 
